@@ -48,6 +48,8 @@ var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+var flashlight_on = false
+@onready var flashlight = $Head/flashlight
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head

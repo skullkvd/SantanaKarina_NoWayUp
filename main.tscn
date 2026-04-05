@@ -8,7 +8,7 @@
 sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_ig7tw")
 ambient_light_source = 3
 ambient_light_color = Color(0.013010121, 0.018170675, 0.06296548, 1)
@@ -714,7 +714,7 @@ light_color = Color(0.9164376, 0.50765336, 0.4835356, 1)
 light_energy = 0.208
 light_indirect_energy = 0.0
 spot_range = 34.820507
-spot_attenuation = -1.22
+spot_attenuation = -0.43
 spot_angle = 43.977932
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="Lights" unique_id=2000106929]

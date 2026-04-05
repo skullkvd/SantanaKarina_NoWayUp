@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://daf7vsuphcpe" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="Script" uid="uid://23wjf8611qjf" path="res://scripts/head.gd" id="2_wr06p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0, 0.03137255, 1, 1)
@@ -37,5 +38,27 @@ shape = SubResource("CapsuleShape3D_iof21")
 
 [node name="Head" type="Node3D" parent="." unique_id=1557232250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+script = ExtResource("2_wr06p")
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=71995981]
+
+[node name="flashlight" type="SpotLight3D" parent="Head" unique_id=982799439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055839777, -0.71130043)
+shadow_enabled = true
+spot_range = 28.0
+spot_angle = 35.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=890741932]
+anchors_preset = -1
+anchor_left = 0.93600005
+anchor_top = 0.9710001
+anchor_right = 0.93600005
+anchor_bottom = 0.9710001
+offset_left = -70.272095
+offset_top = -16.208069
+offset_right = 69.727905
+offset_bottom = 16.791931
+grow_horizontal = 0
+grow_vertical = 0
+max_value = 1000.0
+value = 1000.0
