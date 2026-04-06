@@ -5,6 +5,14 @@
 
 extends CharacterBody3D
 
+@export var max_battery := 100.0
+var battery := max_battery  # <-- This declares the battery variable
+@export var battery_drain_rate := 2.0  # optional, how fast it drains
+@onready var flashlight = $Head/flashlight  # adjust path to your flashlight node
+@export var battery_bar: ProgressBar
+
+
+@export var player = $"."
 ## Can we move around?
 @export var can_move : bool = true
 ## Are we affected by gravity?
@@ -43,13 +51,16 @@ extends CharacterBody3D
 @export var input_sprint : String = "sprint"
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "freefly"
+# Crouch
+var crouching = false
+
 
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 var flashlight_on = false
-@onready var flashlight = $Head/flashlight
+
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
@@ -59,6 +70,10 @@ func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+	# --- FLASHLIGHT ---	
+	if battery_bar:
+		battery_bar.max_value = max_battery
+	update_ui()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -79,6 +94,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
+	if crouching and $Collider.shape.height > 0.25:
+		var crouch_height = lerp($Collider.shape.height, 0.25, 0.2)
+		$Collider.shape.height = crouch_height
+	if !crouching and $Collider.shape.height < 2.0:
+		var crouch_height = lerp($Collider.shape.height, 2.0, 0.2)
+		$Collider.shape.height = crouch_height
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
@@ -103,6 +124,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_speed = base_speed
 
+	if Input.is_action_pressed("crouch"):
+		crouching = !crouching
+	if crouching and base_speed !=10.0:
+		base_speed = 10.0
+	if !crouching and base_speed !=20.0:
+		base_speed = 20.0
+	
+	
 	# Apply desired movement to velocity
 	if can_move:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
@@ -178,3 +207,48 @@ func check_input_mappings():
 	if can_freefly and not InputMap.has_action(input_freefly):
 		push_error("Freefly disabled. No InputAction found for input_freefly: " + input_freefly)
 		can_freefly = false
+
+
+# --- Recharge battery function called by pickups ---
+
+
+func _process(delta):
+	handle_flashlight_toggle()
+	handle_battery(delta)
+	update_flashlight()
+	update_ui()
+
+# ------------------------
+# TOGGLE FLASHLIGHT
+func handle_flashlight_toggle():
+	if Input.is_action_just_pressed("flashlight") and battery > 0:
+		flashlight_on = !flashlight_on
+
+# ------------------------
+# BATTERY DRAIN
+func handle_battery(delta):
+	if flashlight_on:
+		battery -= battery_drain_rate * delta
+		battery = clamp(battery, 0, max_battery)
+
+		if battery <= 0:
+			flashlight_on = false
+
+# ------------------------
+# FLASHLIGHT VISUAL
+func update_flashlight():
+	flashlight.visible = flashlight_on
+	flashlight.light_energy = 1 if flashlight_on else 0
+
+# ------------------------
+# UI UPDATE (THIS FIXES YOUR ISSUE)
+func update_ui():
+	if battery_bar:
+		battery_bar.value = battery
+
+# ------------------------
+# CALLED BY PICKUPS
+func add_battery(amount: float):
+	print("ADDING BATTERY:", amount)
+	battery = clamp(battery + amount, 0, max_battery)
+	update_ui()

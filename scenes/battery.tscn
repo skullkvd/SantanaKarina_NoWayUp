@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://4n0o7vws3ugn"]
+
+[ext_resource type="Script" uid="uid://bvb4r25sofkt4" path="res://scripts/battery.gd" id="1_ytmnr"]
+[ext_resource type="Texture2D" uid="uid://dr4rmy7s3jmy7" path="res://assets/battery.png" id="2_ytmnr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytmnr"]
+size = Vector3(0.15497391, 0.4527279, 0.109389305)
+
+[node name="battery" type="Area3D" unique_id=452877100]
+script = ExtResource("1_ytmnr")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=982668145]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.008619636, 0.34518173, 0)
+layers = 3
+texture = ExtResource("2_ytmnr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1268379111]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -0.0920675, -0.042224452, 0.07332969)
+shape = SubResource("BoxShape3D_ytmnr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
