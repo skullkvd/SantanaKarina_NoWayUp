@@ -61,6 +61,10 @@ var move_speed : float = 0.0
 var freeflying : bool = false
 var flashlight_on = false
 
+var hp = 10
+
+const PUSHBACK = 5.0
+
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
@@ -94,6 +98,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
+	$TextHP.text = "HP:" + str(hp)
+	
 	if crouching and $Collider.shape.height > 0.25:
 		var crouch_height = lerp($Collider.shape.height, 0.25, 0.2)
 		$Collider.shape.height = crouch_height
@@ -252,3 +258,9 @@ func add_battery(amount: float):
 	print("ADDING BATTERY:", amount)
 	battery = clamp(battery + amount, 0, max_battery)
 	update_ui()
+
+
+#Hit Function
+func hit(damage, dir):
+	hp -= damage
+	velocity += dir * PUSHBACK 

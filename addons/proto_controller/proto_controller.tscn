@@ -45,9 +45,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="flashlight" type="SpotLight3D" parent="Head" unique_id=982799439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055839777, -0.71130043)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.1
 shadow_enabled = true
-spot_range = 28.0
-spot_angle = 35.0
+spot_range = 200.0
+spot_angle_attenuation = 1.7411009
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=890741932]
 anchors_preset = -1
@@ -61,5 +64,18 @@ offset_right = 69.727905
 offset_bottom = 16.791931
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 20
 max_value = 1000.0
 value = 1000.0
+
+[node name="TextHP" type="Label" parent="." unique_id=71471544]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -37.0
+offset_right = 89.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "HP:"

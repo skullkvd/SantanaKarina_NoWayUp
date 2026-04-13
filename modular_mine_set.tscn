@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://lh3x4mon84f5"]
+
+[ext_resource type="PackedScene" uid="uid://dfcc7bl8rwed4" path="res://assets/MinesAndCaveSet_Godot/LoafbrrAssets/MineAndCavesSet/gltf/Modular_Mine_Set.glb" id="1_lbiox"]
+[ext_resource type="Material" uid="uid://mnpwlc0stujg" path="res://assets/MinesAndCaveSet_Godot/LoafbrrAssets/MineAndCavesSet/material/Mines_Grounds.material" id="2_rxegf"]
+
+[node name="Modular_Mine_Set" unique_id=1070233207 instance=ExtResource("1_lbiox")]
+
+[node name="Ground_Cave_B" parent="." index="27" unique_id=541957240]
+material_override = ExtResource("2_rxegf")
+
+[node name="Ground_Cave_A" parent="." index="28" unique_id=275824499]
+material_override = ExtResource("2_rxegf")
