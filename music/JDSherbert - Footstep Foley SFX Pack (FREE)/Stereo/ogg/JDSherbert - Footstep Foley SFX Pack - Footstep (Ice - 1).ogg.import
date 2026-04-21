@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnvddwrt1f5vn"
+path="res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Ice - 1).ogg-09f085e2889caa3144c44424847dd507.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Stereo/ogg/JDSherbert - Footstep Foley SFX Pack - Footstep (Ice - 1).ogg"
+dest_files=["res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Ice - 1).ogg-09f085e2889caa3144c44424847dd507.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

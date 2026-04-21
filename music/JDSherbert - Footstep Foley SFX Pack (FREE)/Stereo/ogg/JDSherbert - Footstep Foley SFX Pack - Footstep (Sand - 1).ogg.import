@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dtkbshls4cm6d"
+path="res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Sand - 1).ogg-aa3fe79a7b5c4dc1c8bef6bb9e6bab9d.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Stereo/ogg/JDSherbert - Footstep Foley SFX Pack - Footstep (Sand - 1).ogg"
+dest_files=["res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Sand - 1).ogg-aa3fe79a7b5c4dc1c8bef6bb9e6bab9d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

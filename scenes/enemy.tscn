@@ -12,6 +12,7 @@
 [ext_resource type="Animation" uid="uid://bbh0wfa7n1vyl" path="res://enemy/scream.tres" id="7_g0wcc"]
 [ext_resource type="Animation" uid="uid://igoyqudsrs0u" path="res://enemy/turn.tres" id="8_s1ycm"]
 [ext_resource type="Animation" uid="uid://btn4t6814aanm" path="res://enemy/walk.tres" id="9_shcg2"]
+[ext_resource type="AudioStream" uid="uid://de7i3pn860o3r" path="res://SFX/808363__grayepic__pig-zombies.mp3" id="13_wtq4b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqjt"]
 resource_name = "parasitezombie_Material1"
@@ -315,7 +316,7 @@ fadein_time = 0.4
 animation = &"animations/walk"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_t3vcr"]
-graph_offset = Vector2(-512.2039, 114.11192)
+graph_offset = Vector2(-567.98047, 90.59129)
 nodes/run/node = SubResource("AnimationNodeAnimation_wjec0")
 nodes/run/position = Vector2(-440, -20)
 nodes/attack/node = SubResource("AnimationNodeAnimation_rogs8")
@@ -341,23 +342,14 @@ height = 34.783287
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_otmr2"]
 animation = &"animations/attack"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wtq4b"]
-animation = &"animations/idle"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j0cyh"]
 animation = &"animations/run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g0wcc"]
 animation = &"animations/scream"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s1ycm"]
-xfade_time = 0.2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_shcg2"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"animations_run"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wtq4b"]
+animation = &"animations/walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1x4g4"]
 xfade_time = 0.2
@@ -379,19 +371,25 @@ xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j0cyh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g0wcc"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wrm80"]
 states/End/position = Vector2(901, 100)
-states/Start/position = Vector2(197, 100)
+states/Start/position = Vector2(171, 100)
 states/animations_attack/node = SubResource("AnimationNodeAnimation_otmr2")
 states/animations_attack/position = Vector2(760, 94)
-states/animations_idle/node = SubResource("AnimationNodeAnimation_wtq4b")
-states/animations_idle/position = Vector2(382, 94)
 states/animations_run/node = SubResource("AnimationNodeAnimation_j0cyh")
 states/animations_run/position = Vector2(568, 94)
 states/animations_scream/node = SubResource("AnimationNodeAnimation_g0wcc")
 states/animations_scream/position = Vector2(588, 197)
-transitions = ["Start", "animations_idle", SubResource("AnimationNodeStateMachineTransition_s1ycm"), "animations_idle", "animations_run", SubResource("AnimationNodeStateMachineTransition_shcg2"), "animations_run", "animations_scream", SubResource("AnimationNodeStateMachineTransition_1x4g4"), "animations_scream", "animations_run", SubResource("AnimationNodeStateMachineTransition_2pwtc"), "animations_run", "animations_attack", SubResource("AnimationNodeStateMachineTransition_ile5s"), "animations_attack", "animations_run", SubResource("AnimationNodeStateMachineTransition_rogs8")]
-graph_offset = Vector2(0, -26.020914)
+states/animations_walk/node = SubResource("AnimationNodeAnimation_wtq4b")
+states/animations_walk/position = Vector2(357, 94)
+transitions = ["animations_run", "animations_scream", SubResource("AnimationNodeStateMachineTransition_1x4g4"), "animations_scream", "animations_run", SubResource("AnimationNodeStateMachineTransition_2pwtc"), "animations_run", "animations_attack", SubResource("AnimationNodeStateMachineTransition_ile5s"), "animations_attack", "animations_run", SubResource("AnimationNodeStateMachineTransition_rogs8"), "Start", "animations_walk", SubResource("AnimationNodeStateMachineTransition_j0cyh"), "animations_walk", "animations_run", SubResource("AnimationNodeStateMachineTransition_g0wcc")]
+graph_offset = Vector2(0, 10.230141)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1749483760]
 collision_layer = 2
@@ -891,6 +889,11 @@ mesh = SubResource("ArrayMesh_2phbe")
 skin = SubResource("Skin_qc0vr")
 skeleton = NodePath("..")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1944443811]
+target_desired_distance = 0.8
+path_height_offset = 0.1
+avoidance_enabled = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=748893443]
 libraries/animations = SubResource("AnimationLibrary_ile5s")
 
@@ -907,18 +910,17 @@ parameters/Blend2/blend_amount = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2077227, 10.728059, 3.1151505)
 shape = SubResource("CapsuleShape3D_j0cyh")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1944443811]
-target_desired_distance = 0.8
-path_height_offset = 0.1
-avoidance_enabled = true
-
 [node name="AnimationTree2" type="AnimationTree" parent="." unique_id=2042184207]
 tree_root = SubResource("AnimationNodeStateMachine_wrm80")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/animations_attack = false
-parameters/conditions/animations_run = false
 parameters/conditions/animations_scream = false
 
 [node name="RayCast" type="RayCast3D" parent="." unique_id=815324872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.174543, 0)
 target_position = Vector3(0, 0, -30)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=974963511]
+stream = ExtResource("13_wtq4b")
+attenuation_model = 2
+autoplay = true

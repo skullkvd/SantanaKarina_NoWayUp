@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c26u67ddj4ddm"
+path="res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Wood - 2).mp3-5956de2907e4ba04d22d69ad3decd79d.mp3str"
+
+[deps]
+
+source_file="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Stereo/mp3/JDSherbert - Footstep Foley SFX Pack - Footstep (Wood - 2).mp3"
+dest_files=["res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Wood - 2).mp3-5956de2907e4ba04d22d69ad3decd79d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

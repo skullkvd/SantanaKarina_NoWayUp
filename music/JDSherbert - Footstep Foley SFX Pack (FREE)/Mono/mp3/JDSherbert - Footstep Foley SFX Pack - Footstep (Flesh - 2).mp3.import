@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c03in8r2t5ru6"
+path="res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Flesh - 2).mp3-a52f15ea00c6a2861b18b9409dd40770.mp3str"
+
+[deps]
+
+source_file="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Mono/mp3/JDSherbert - Footstep Foley SFX Pack - Footstep (Flesh - 2).mp3"
+dest_files=["res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Flesh - 2).mp3-a52f15ea00c6a2861b18b9409dd40770.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

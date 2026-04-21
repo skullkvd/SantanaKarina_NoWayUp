@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chgrfqmix2aaf"
+path="res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Lava - 1).mp3-120d997e0d12969a86fd4d4aea2c997c.mp3str"
+
+[deps]
+
+source_file="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Stereo/mp3/JDSherbert - Footstep Foley SFX Pack - Footstep (Lava - 1).mp3"
+dest_files=["res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Lava - 1).mp3-120d997e0d12969a86fd4d4aea2c997c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

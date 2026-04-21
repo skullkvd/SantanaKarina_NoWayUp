@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2hdfjk8ny08a"
+path="res://.godot/imported/JDSherbert - Ambiences Music Pack - Frost Mountain Aura.wav-95474a5633f6dcce01dbf27beae75056.sample"
+
+[deps]
+
+source_file="res://music/JDSherbert - Ambiences Music Pack [FREE]/JDSherbert - Ambiences Music Pack [FREE]/Stereo/wav/JDSherbert - Ambiences Music Pack - Frost Mountain Aura.wav"
+dest_files=["res://.godot/imported/JDSherbert - Ambiences Music Pack - Frost Mountain Aura.wav-95474a5633f6dcce01dbf27beae75056.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

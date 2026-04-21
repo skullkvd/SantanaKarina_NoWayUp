@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://coirlm7jh2cu5"]
+
+[ext_resource type="Script" uid="uid://d4knxqbrjcyar" path="res://scripts/ending.gd" id="1_2x1jc"]
+[ext_resource type="FontFile" uid="uid://c8pwybdy3wfqx" path="res://fonts/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/kirifont/KiriFont.ttf" id="1_fyrdv"]
+[ext_resource type="AudioStream" uid="uid://qp420tlnoba1" path="res://music/NWU_ending_Song.wav" id="2_2x1jc"]
+
+[sub_resource type="Animation" id="Animation_fyrdv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/RichTextLabel2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2x1jc"]
+resource_name = "fade"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 7.0333333, 15.033334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/RichTextLabel2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(15.037495, 19.333334, 19.987495),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfmnx"]
+_data = {
+&"RESET": SubResource("Animation_fyrdv"),
+&"fade": SubResource("Animation_2x1jc")
+}
+
+[node name="ending" type="Control" unique_id=350757729]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2x1jc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2019282571]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1163831285]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1349056606]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -139.0
+offset_right = 327.5
+offset_bottom = 189.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_fyrdv")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center] Don't Look Back...
+
+You....
+
+Made it."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer" unique_id=1506461619]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.25
+offset_top = -159.625
+offset_right = 321.25
+offset_bottom = 159.625
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.7294118, 0.09019608, 0.105882354, 1)
+theme_override_constants/outline_size = 109
+theme_override_fonts/normal_font = ExtResource("1_fyrdv")
+theme_override_font_sizes/normal_font_size = 68
+bbcode_enabled = true
+text = "
+
+[center] NO WAY OUT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1652574450]
+libraries/ = SubResource("AnimationLibrary_nfmnx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1518765060]
+stream = ExtResource("2_2x1jc")
+autoplay = true

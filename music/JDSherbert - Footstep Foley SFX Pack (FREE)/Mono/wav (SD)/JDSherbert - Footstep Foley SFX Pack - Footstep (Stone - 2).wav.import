@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ci5w254wtveim"
+path="res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Stone - 2).wav-779be13b0a8313655ee420ac1942ac77.sample"
+
+[deps]
+
+source_file="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Mono/wav (SD)/JDSherbert - Footstep Foley SFX Pack - Footstep (Stone - 2).wav"
+dest_files=["res://.godot/imported/JDSherbert - Footstep Foley SFX Pack - Footstep (Stone - 2).wav-779be13b0a8313655ee420ac1942ac77.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

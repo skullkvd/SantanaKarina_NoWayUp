@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	match state_machine.get_current_node():
-		"animations_idle":
+		"animations_walk":
 			raycast.look_at(player.global_position, Vector3.UP)
 			if raycast.is_colliding():
 				if raycast.get_collider() == player:

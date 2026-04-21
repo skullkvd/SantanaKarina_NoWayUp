@@ -10,6 +10,8 @@ var battery := max_battery  # <-- This declares the battery variable
 @export var battery_drain_rate := 2.0  # optional, how fast it drains
 @onready var flashlight = $Head/flashlight  # adjust path to your flashlight node
 @export var battery_bar: ProgressBar
+@onready var footsteps_se: AudioStreamPlayer3D = %footsteps
+
 
 
 @export var player = $"."
@@ -60,8 +62,12 @@ var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 var flashlight_on = false
+var step_timer = 0.0
+var step_interval = 0.4
 
 var hp = 10
+var is_dead = false
+@export var game_over_scene: PackedScene
 
 const PUSHBACK = 5.0
 
@@ -99,6 +105,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	$TextHP.text = "HP:" + str(hp)
+	play_footsteps(delta)
 	
 	if crouching and $Collider.shape.height > 0.25:
 		var crouch_height = lerp($Collider.shape.height, 0.25, 0.2)
@@ -259,8 +266,44 @@ func add_battery(amount: float):
 	battery = clamp(battery + amount, 0, max_battery)
 	update_ui()
 
+#Damage System
+func take_damage(amount):
+	hp-= amount
+	print("HP:", hp)
+	
+	if hp <= 0:
+		die()
 
 #Hit Function
 func hit(damage, dir):
-	hp -= damage
 	velocity += dir * PUSHBACK 
+	take_damage(damage)
+	
+#Death/Scene Change
+func die():
+	if is_dead:
+		return
+	is_dead = true
+	print("Player died")
+	
+	#Release Mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	if game_over_scene:
+		get_tree().change_scene_to_packed(game_over_scene)
+	else:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	
+	
+#Footsteps
+func play_footsteps(delta) -> void:
+	if velocity.length() > 0.1 and is_on_floor():
+		step_timer -= delta
+		if step_timer <= 0:
+			footsteps_se.pitch_scale = randf_range(0.9, 1.1)
+			footsteps_se.play()
+			step_timer = step_interval
+	else:
+		step_timer = 0
+		
+		

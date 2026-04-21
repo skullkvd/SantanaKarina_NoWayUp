@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://brcdijiplr3df"]
+
+[ext_resource type="Texture2D" uid="uid://c4l25fdtqj648" path="res://vfx/brackeys_vfx_bundle/brackeys_vfx_bundle/particles/alpha/star_02_a.png" id="1_jw3tu"]
+
+[sub_resource type="Gradient" id="Gradient_y25om"]
+offsets = PackedFloat32Array(0, 0.9904762, 1)
+colors = PackedColorArray(0.9411765, 0, 0, 1, 0.99607843, 0.6862745, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_677d1"]
+gradient = SubResource("Gradient_y25om")
+
+[sub_resource type="Curve" id="Curve_017rx"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0.021186441, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3vw28"]
+curve = SubResource("Curve_017rx")
+
+[sub_resource type="Curve" id="Curve_ioprr"]
+_data = [Vector2(0.0042372867, 1), 0.0, 0.0, 0, 0, Vector2(0.9957627, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0n7q"]
+curve = SubResource("Curve_ioprr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cmmuw"]
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 180.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.3, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_b0n7q")
+color_initial_ramp = SubResource("GradientTexture1D_677d1")
+emission_curve = SubResource("CurveTexture_3vw28")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xldo"]
+albedo_texture = ExtResource("1_jw3tu")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_qayni"]
+material = SubResource("StandardMaterial3D_6xldo")
+
+[node name="Node3D" type="Node3D" unique_id=1415690283]
+
+[node name="particles" type="GPUParticles3D" parent="." unique_id=1792252477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4569848, 0)
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_cmmuw")
+draw_pass_1 = SubResource("QuadMesh_qayni")

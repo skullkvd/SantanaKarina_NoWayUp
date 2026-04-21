@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c6oxmr4dcxupq"]
+
+[ext_resource type="Script" uid="uid://bqno53jy7ojka" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="Texture2D" uid="uid://bknxpatrvb5t2" path="res://PNG/NoWayUPMM.png" id="2_8ln24"]
+[ext_resource type="FontFile" uid="uid://bsisy1ihr0ww5" path="res://fonts/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/cmu-typewriter/Typewriter/cmuntb.ttf" id="3_rtw2f"]
+[ext_resource type="FontFile" uid="uid://c8pwybdy3wfqx" path="res://fonts/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/kirifont/KiriFont.ttf" id="4_oa1go"]
+[ext_resource type="AudioStream" uid="uid://o28bvlxe5xih" path="res://music/wav/JDSherbert - Ambiences Music Pack - Underwater City.wav" id="5_8ln24"]
+
+[node name="main_menu" type="Control" unique_id=258748250]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wu84c")
+
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1065841090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8ln24")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1798202622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1997557124]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1503386631]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rtw2f")
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1239656174]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rtw2f")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1339117362]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rtw2f")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="Label" type="Label" parent="." unique_id=1611240762]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -255.0
+offset_right = 258.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.75273037, 0, 0.03406483, 1)
+theme_override_constants/outline_size = 81
+theme_override_constants/shadow_outline_size = 44
+theme_override_fonts/font = ExtResource("4_oa1go")
+theme_override_font_sizes/font_size = 70
+text = "NO WAY OUT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=801978404]
+stream = ExtResource("5_8ln24")
+autoplay = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

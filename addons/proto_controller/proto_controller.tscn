@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://daf7vsuphcpe" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="AudioStream" uid="uid://bsbsauposehyx" path="res://music/JDSherbert - Footstep Foley SFX Pack (FREE)/Stereo/wav (HD)/JDSherbert - Footstep Foley SFX Pack - Footstep (Gravel - 2).wav" id="2_wr06p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0, 0.03137255, 1, 1)
@@ -45,11 +46,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="flashlight" type="SpotLight3D" parent="Head" unique_id=982799439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055839777, -0.71130043)
-light_energy = 16.0
-light_indirect_energy = 16.0
+light_energy = 200.0
+light_indirect_energy = 80.0
 light_volumetric_fog_energy = 0.1
 shadow_enabled = true
-spot_range = 200.0
+spot_range = 150.0
 spot_angle_attenuation = 1.7411009
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=890741932]
@@ -79,3 +80,11 @@ offset_bottom = -14.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "HP:"
+
+[node name="Audio" type="Node3D" parent="." unique_id=1956429071]
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="Audio" unique_id=162159966]
+unique_name_in_owner = true
+stream = ExtResource("2_wr06p")
+volume_db = -30.0
+max_distance = 271.26

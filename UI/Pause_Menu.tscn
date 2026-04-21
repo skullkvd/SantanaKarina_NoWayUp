@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c6rcjo4gtvua0"]
+
+[ext_resource type="Script" uid="uid://xcumwn8kqnel" path="res://UI/pause_menu.gd" id="1_nuv23"]
+
+[node name="pause_menu" type="CanvasLayer" unique_id=879689748]
+layer = 2
+script = ExtResource("1_nuv23")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=228894061]
+offset_left = 1.0
+offset_right = 434.0
+offset_bottom = 644.0
+color = Color(0.50074106, 1.2153015e-06, 1.4439226e-07, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=684549477]
+offset_left = 1.0
+offset_right = 415.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=245424381]
+offset_right = 418.0
+offset_bottom = 115.0
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]PAUSED"
+
+[node name="Button" type="Button" parent="." unique_id=601765691]
+offset_left = 86.0
+offset_top = 121.0
+offset_right = 330.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="Button2" type="Button" parent="." unique_id=204017293]
+offset_left = 93.0
+offset_top = 222.0
+offset_right = 337.0
+offset_bottom = 313.0
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Button3" type="Button" parent="." unique_id=690265581]
+offset_left = 92.0
+offset_top = 336.0
+offset_right = 336.0
+offset_bottom = 426.0
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+
+[node name="Button4" type="Button" parent="." unique_id=1240789045]
+offset_left = 71.0
+offset_top = 440.0
+offset_right = 358.0
+offset_bottom = 521.0
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[node name="Button5" type="Button" parent="." unique_id=124148388]
+offset_left = 68.0
+offset_top = 535.0
+offset_right = 355.0
+offset_bottom = 612.0
+theme_override_font_sizes/font_size = 50
+text = "Quit Game"
