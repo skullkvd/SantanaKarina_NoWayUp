@@ -91,7 +91,7 @@ radius = 6.6938477
 environment = SubResource("Environment_0xm2m")
 
 [node name="ProtoController" parent="." unique_id=74249164 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(0.041718654, 0, 0.9991294, 0, 1, 0, -0.9991294, 0, 0.041718654, 85.96234, 0.50001526, -30.274956)
+transform = Transform3D(0.041718654, 0, 0.9991294, 0, 1, 0, -0.9991294, 0, 0.041718654, 85.96234, 0.50001526, -102.274956)
 can_sprint = true
 game_over_scene = ExtResource("2_wnkbs")
 
@@ -1519,6 +1519,14 @@ transform = Transform3D(3.325, 0, 0, 0, 2.53, 0, 0, 0, 5.125, 49.87345, 0.703844
 
 [node name="Cave_Rocks_A" parent="Props" unique_id=675226613 instance=ExtResource("29_come4")]
 transform = Transform3D(10.505, 0, 0, 0, 4.985, 0, 0, 0, 11.2, -186.13512, 4.162225, 32.120823)
+layers = 3
+
+[node name="Cave_Rocks_A2" parent="Props" unique_id=634600485 instance=ExtResource("29_come4")]
+transform = Transform3D(10.505, 0, 0, 0, 4.985, 0, 0, 0, 11.2, -251.7233, 4.162225, -5.4008827)
+layers = 3
+
+[node name="Cave_Rocks_A3" parent="Props" unique_id=1475480106 instance=ExtResource("29_come4")]
+transform = Transform3D(10.505, 0, 0, 0, 4.985, 0, 0, 0, 11.2, -291.9906, 4.162225, 28.151726)
 layers = 3
 
 [node name="Mine_Cart_CB_grp" parent="Props" unique_id=1555246846 instance=ExtResource("30_h8e4i")]
